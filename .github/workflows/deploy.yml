@@ -11,33 +11,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: my-artifact
-        path: path/to/artifact
-    - name: Checkout repo
-      uses: actions/checkout@v2
-     - name: Clear npm cache
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: path/to/artifact
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Clear npm cache
         run: npm cache clean --force
 
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18
 
-    - name: Setup Node
-      uses: actions/setup-node@v1
-      with:
-        node-version: 18
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
 
-    - name: Install dependencies
-      uses: bahmutov/npm-install@v1
+      - name: Build project
+        run: npm run build
 
-    - name: Build project
-      run: npm run build
-
-    - name: Upload production-ready build files
-      uses: actions/upload-artifact@v3  # Update to v3
-      with:
-        name: production-files
-        path: ./dist
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v3  # Update to v3
+        with:
+          name: production-files
+          path: ./dist
 
   deploy:
     name: Deploy
