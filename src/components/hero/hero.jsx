@@ -7,8 +7,8 @@ import "./slider.css";
 import { Pagination } from "swiper/modules";
 import IconSection from "./iconSection";
 const mySlider=[
-    {text:"MEN", link:"src/HeroImages/banner-15.jpg",},
-    {text:"WOMEN", link:"src/HeroImages/banner-25.jpg",}
+    {text:"MEN", link:"https://www.urbanjacketars.com/cdn/shop/files/Black_Man_Jacket.jpg?v=1714138519&width=3840",},
+    {text:"WOMEN", link:"https://static.vecteezy.com/system/resources/thumbnails/032/627/169/small/smiling-graceful-woman-in-summer-outfit-with-straw-hat-playing-ukulele-guitare-over-white-background-in-studio-with-pampas-grass-decor-photo.jpg",}
 ]
 
 const Hero = () => {
