@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "predeploy": "vite build --out-dir build",
+        "predeploy": "vite build --out-dir build --assetsInclude '**/*.jpg', '**/*.png'",
         "deploy": "gh-pages -d build",
         "start": "vite",
         "dev": "vite",
