@@ -22,7 +22,7 @@ jobs:
         with:
           # Upload existing artifact.tar.gz file
           name: artifact
-          path: './build/archive/artifact.tar.gz'
+          path: build/archive/artifact.tar.gz
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1
