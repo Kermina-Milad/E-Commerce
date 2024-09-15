@@ -39,13 +39,15 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Create archive
+        run: tar -czf artifact.tar.gz build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload dist folder
-          path: './dist'
+          # Upload artifact.tar.gz file
+          path: './artifact.tar.gz'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
