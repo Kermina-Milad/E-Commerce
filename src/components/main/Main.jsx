@@ -205,7 +205,7 @@ const handleAddToCart = (item) => {
               minWidth: { xs: "100%", md: 800 },
             },
           }}
-          className="border"
+          
           open={open}
           onClose={handleClose}
           aria-labelledby="alert-dialog-title"

@@ -2,7 +2,9 @@ import { ExpandMore, ShoppingCartOutlined } from "@mui/icons-material";
 import {
   Avatar,
   Box,
+  Button,
   Card,
+  CardActions,
   CardContent,
   CardMedia,
   Container,
@@ -13,6 +15,7 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemButton,
+  Rating,
   Stack,
   Typography,
 } from "@mui/material";
@@ -87,7 +90,7 @@ const options = ["All Catagories", "Car", "Clothes", "Electronics"];
 
 export default function Header2() {
   
-  const { cartCount, cartItems} = useContext(CartContext);
+  const { cartCount, cartItems, updateCart } = useContext(CartContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const open = Boolean(anchorEl);
@@ -111,8 +114,15 @@ console.log(cartItems);
   const opencartdrawer = (newOpencart) => () => {
     setOpencart(newOpencart);
   };
-  const DrawerList = (
-  <Box sx={{ width: 450 }} role="presentation" onClick={opencartdrawer(false)}>
+
+
+
+  const handleRemoveFromCart = (productId) => {
+    const newCartItems = cartItems.filter((item) => item.id !== productId);
+    updateCart(newCartItems);
+  };
+  const DrawerList = ({ onRemoveFromCart }) => (
+  <Box sx={{ width: 340 }} role="presentation" >
     <List>
       <ul>
         {cartItems.map((product) => (
@@ -151,6 +161,21 @@ console.log(cartItems);
                   {product.description}
                 </Typography>
               </CardContent>
+              <CardActions sx={{ justifyContent: "space-between" }}>
+                  <Button
+                  onClick={() => handleRemoveFromCart(product.id)}
+                    sx={{ textTransform: "capitalize" }}
+                    size="large"
+                  >
+                    <ShoppingCartIcon
+                      fontSize="small"
+                      sx={{ mr: 1 }}
+                    />
+                    Remove from Cart
+                  </Button>
+                  
+                </CardActions>
+                
             </Card>
           </li>
         ))}
@@ -221,67 +246,6 @@ const [openuser, setOpenuser] =useState(false);
           placeholder="Search…"
           inputProps={{ "aria-label": "search" }}
         />
-        {/* <div>
-          <List
-            component="nav"
-            aria-label="Device settings"
-            sx={{
-              bgcolor: theme.palette.mycolor.main,
-              borderBottomRightRadius: 22,
-              borderTopRightRadius: 22,
-              // padding: 0,
-              "&:hover": {
-                cursor: "pointer",
-              },
-            }}
-          >
-            <ListItem
-              id="lock-button"
-              aria-haspopup="listbox"
-              aria-controls="lock-menu"
-              aria-label="when device is locked"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClickListItem}
-            >
-              <ListItemText
-                sx={{
-                  width: 90,
-                  textAlign: "center",
-                  "&:hover": {
-                    cursor: "pointer",
-                  },
-                }}
-                secondary={options[selectedIndex]}
-              />
-              <ExpandMore
-                sx={{
-                  fontSize: "16px",
-                }}
-              />
-            </ListItem>
-          </List>
-          <Menu
-            id="lock-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-              "aria-labelledby": "lock-button",
-              role: "listbox",
-            }}
-          >
-            {options.map((option, index) => (
-              <MenuItem
-                sx={{ fontSize: "13px" }}
-                key={option}
-                selected={index === selectedIndex}
-                onClick={(event) => handleMenuItemClick(event, index)}
-              >
-                {option}
-              </MenuItem>
-            ))}
-          </Menu>
-        </div> */}
       </Search>
       <Stack direction={"row"} alignItems={"center"}>
         <IconButton aria-label="cart">
@@ -289,8 +253,8 @@ const [openuser, setOpenuser] =useState(false);
             
             <ShoppingCartIcon  onClick={opencartdrawer(true)}/>
             <Drawer anchor="right" open={opencart} onClose={opencartdrawer(false)}>
-        {DrawerList}
-      </Drawer>
+            <DrawerList onRemoveFromCart={handleRemoveFromCart} />
+</Drawer>
           </StyledBadge>
         </IconButton>
         <IconButton onClick={handleClickOpenuser}>
