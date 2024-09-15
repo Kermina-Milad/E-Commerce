@@ -40,7 +40,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Create archive
-        run: tar -czf artifact.tar.gz build
+        run: tar -czf artifact.tar.gz ./build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
