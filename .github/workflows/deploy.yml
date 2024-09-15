@@ -20,8 +20,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload existing artifact.tar.gz file
+          name: artifact
           path: './artifact.tar.gz'
-          filename: 'artifact.tar.gz'
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1
