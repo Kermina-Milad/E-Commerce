@@ -48,6 +48,7 @@ jobs:
         with:
           # Upload artifact.tar.gz file
           path: './artifact.tar.gz'
+          filename: 'artifact.tar.gz'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
