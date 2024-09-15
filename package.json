@@ -3,6 +3,7 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
+    "homepage": "https://Kermina-Milad.github.io/E-Commerce",
     "scripts": {
         "predeploy": "vite build --out-dir build",
         "deploy": "gh-pages -d build",
@@ -13,7 +14,6 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "homepage": "https://Kermina-Milad.github.io/E-Commerce",
         "@emotion/react": "^11.11.4",
         "@emotion/styled": "^11.11.5",
         "@mui/icons-material": "^5.16.4",
@@ -35,6 +35,6 @@
         "eslint-plugin-react": "^7.34.3",
         "eslint-plugin-react-hooks": "^4.6.2",
         "eslint-plugin-react-refresh": "^0.4.7",
-        "vite": "^5.3.4",
+        "vite": "^5.4.5"
     }
 }
