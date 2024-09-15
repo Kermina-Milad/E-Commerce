@@ -14,14 +14,15 @@ jobs:
 
       - name: Create archive
         run: |
-          tar -czf artifact.tar.gz ./build
+          mkdir -p build/archive
+          tar -czf build/archive/artifact.tar.gz ./build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload existing artifact.tar.gz file
           name: artifact
-          path: './artifact.tar.gz'
+          path: './build/archive/artifact.tar.gz'
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1
