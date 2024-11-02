@@ -5,12 +5,9 @@
     "type": "module",
     "homepage": "https://Kermina-Milad.github.io/E-Commerce",
     "scripts": {
-        "predeploy": "vite build --out-dir build",
-        "deploy": "gh-pages -d build",
-        "start": "vite",
         "dev": "vite",
-        "build": "vite build --out-dir build",
-        "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+        "build": "vite build",
+        "lint": "eslint .",
         "preview": "vite preview"
     },
     "dependencies": {
