@@ -6,9 +6,9 @@ export default defineConfig({
     plugins: [react()],
     base: "/E-Commerce/",
     build: {
-        outDir: 'build',
+        outDir: 'dist',
         assetsInclude: ['**/*.jpg', '**/*.png'],
-        assetsDir: '',
+        // assetsDir: '',
     },
 
 })
